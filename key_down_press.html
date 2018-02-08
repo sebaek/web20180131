@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script>
     $(function() {
         $("#i1").keydown(function() {
@@ -19,16 +19,54 @@
             $("#p2 span").text(function(i, origin) {
                 return Number(origin) + 1;
             });
-        })
+        });
+
+        $("#button1").click(function() {
+            $("#d1").animate({
+                backgroundColor: 'blue'
+            }, 3000);
+        });
+
+        $("#button2").click(function() {
+            $("#d2>span").animate({
+                width: '100%'
+            });
+        });
     });
     
     </script>
+
+    <style>
+        #d1, #d2 {
+
+            width: 200px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #d2 {
+            background-color: yellow;
+        }
+
+        #d2>span {
+            display: inline-block;
+            width: 47.609px;
+            text-align: center;
+            overflow: visible;
+        }
+    </style>
 </head>
 <body>
 
     <input type="text" name="i1" id="i1"><br>
     <p id="p1">keydown: <span></span></p>
     <p id="p2">keypress: <span></span></p>
+    <button id="button1" >COLOR ANIMATE</button>
+    <div id="d1"></div>
+
+    <button id="button2">TEXT ALIGN CENTER</button>
+    <div id="d2"><span>HELLO</span></div>
+
     
 </body>
 </html>
