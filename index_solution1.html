@@ -24,7 +24,7 @@
             $("#result1").html(showStars1());
 
             //문제2
-            var showStars2 = function() {
+            var showStars2 = function () {
                 var resultText = "";
 
                 for (var i = 0; i < 5; i++) {
@@ -41,7 +41,7 @@
             $("#result2").html(showStars2());
 
             //문제3
-            var showStars3 = function() {
+            var showStars3 = function () {
                 var resultText = "";
 
                 for (var i = 0; i < 5; i++) {
@@ -52,7 +52,7 @@
 
                     }
 
-                    for (var k = 0; k < (5-i); k++) {
+                    for (var k = 0; k < (5 - i); k++) {
 
                         resultText += "*"; // 5, 4, 3, 2, 1
 
@@ -67,16 +67,16 @@
 
 
             // 문제 4
-            var showStars4 = function() {
+            var showStars4 = function () {
                 var resultText = "";
 
                 for (var i = 0; i < 5; i++) {
-                    for (var k = 0; k < (4-i); k++) {
+                    for (var k = 0; k < (4 - i); k++) {
                         resultText += "&nbsp;" // 4, 3, 2, 1, 0
 
                     }
 
-                    for (var j = 0; j < (i+1); j++) {
+                    for (var j = 0; j < (i + 1); j++) {
                         resultText += "*"; // 1, 2, 3, 4, 5
 
                     }
@@ -91,30 +91,30 @@
             $("#result4").html(showStars4());
 
             // 문제 5
-            $("#button5-1").click(function() {
+            $("#button5-1").click(function () {
                 var number1 = Number($("#input5-1").val());
                 var number2 = Number($("#input5-2").val());
                 $("#result5").text(number1 > number2 ? number1 : number2);
             });
 
-            $("#button5-2").click(function() {
+            $("#button5-2").click(function () {
                 var number1 = Number($("#input5-1").val());
                 var number2 = Number($("#input5-2").val());
                 $("#result5").text(number1 < number2 ? number1 : number2);
             });
 
             // 문제6
-            $("#button6-1").click(function() {
+            $("#button6-1").click(function () {
                 var text = $("#input6-1").val();
                 var numbers = text.split(",");
-                numbers.sort(function(a, b) {return a - b;});
+                numbers.sort(function (a, b) { return a - b; });
 
                 $("#result6").text(numbers);
 
             });
 
             // 문제 7
-            $("#button7-1").click(function() {
+            $("#button7-1").click(function () {
                 var text = $("#input7-1").val();
                 var numbers = text.split(",");
                 var resultText = "";
@@ -131,12 +131,133 @@
 
                 if (resultText === "") {
                     resultText = (negative % 2) === 0 ? "양수입니다."
-                                                      : "음수입니다.";
+                        : "음수입니다.";
                 }
 
                 $("#result7").text(resultText);
 
             });
+
+            //문제 8
+            $("#button8-1").click(function () {
+                var text1 = $("#input8-1").val();
+                var text2 = $("#input8-2").val();
+                var resultText = text1 + text2;
+
+                $("#result8").text(resultText);
+            });
+
+            //문제 9
+            $("#button9").click(function () {
+                var text1 = $("#input9-1").val();
+                var text2 = $("#input9-2").val();
+
+                var result = text2.indexOf(text1);
+
+                $("#result9").text("위치는 " + result);
+            });
+
+            //문제 10
+            $("#button10-1").click(function () {
+                var number1 = Number($("#input10-1").val());
+                var number2 = Number($("#input10-2").val());
+
+                $("#result10").text(number1 + number2);
+            });
+            $("#button10-2").click(function () {
+                var number1 = Number($("#input10-1").val());
+                var number2 = Number($("#input10-2").val());
+
+                $("#result10").text(number1 - number2);
+            });
+            $("#button10-3").click(function () {
+                var number1 = Number($("#input10-1").val());
+                var number2 = Number($("#input10-2").val());
+
+                $("#result10").text(number1 * number2);
+            });
+            $("#button10-4").click(function () {
+                var number1 = Number($("#input10-1").val());
+                var number2 = Number($("#input10-2").val());
+
+                $("#result10").text(number1 / number2);
+            });
+            $("#button10-5").click(function () {
+                var number1 = Number($("#input10-1").val());
+                var number2 = Number($("#input10-2").val());
+
+                $("#result10").text(number1 % number2);
+            });
+
+
+            // 문제11 
+            $("#button11").click(function () {
+                var number1 = Number($("#input11-1").val());
+                var number2 = Number($("#input11-2").val());
+
+                var randomNumber =
+                    Math.floor(
+                        Math.random() * (number2 - number1 + 1)) + number1;
+
+                $("#result11").text(randomNumber);
+
+            });
+
+            //문제12
+            $("#button12").click(function () {
+                var origin = $("#input12").val();
+                var reversed = "";
+
+                var chars = origin.split("");
+                chars.reverse();
+
+                reversed = chars.join("");
+
+                $("#result12").text(reversed);
+            });
+
+            // 문제 13
+            $("#button13").click(function () {
+                var number = Number($("#input13").val());
+                var resultText = "";
+
+                for (var i = 1; i <= 9; i++) {
+                    // n x 1 = r
+                    // n x 2 = r
+                    // ....
+                    resultText += number + " &times; " +
+                        i + " = " + (number * i) + "<br>";
+                }
+
+                $("#result13").html(resultText);
+
+            });
+
+            //문제 14
+            for (var j = 2; j <= 9; j++) {
+                var dan = $("<div/>");
+                var resultText = "";
+                for (var i = 1; i <= 9; i++) {
+                    // n x 1 = r
+                    // n x 2 = r
+                    // ....
+                    resultText += j + " &times; " +
+                        i + " = " + (j * i) + "<br>";
+                }
+                dan.html(resultText);
+                dan.css({
+                    "border": "1px solid black",
+                    "margin": "15px",
+                    "padding": "10px",
+                    "width": "100px",
+                    "display": "inline-block"
+                });
+
+
+                $("#result14").append(dan);
+            }
+
+
 
 
 
@@ -153,26 +274,89 @@
     <p id="result2"></p>
     <p id="result3"></p>
     <p id="result4"></p>
-<hr>
-<h2>문제5</h2>
-<input type="text" name="" id="input5-1"><br>
-<input type="text" name="" id="input5-2"><br>
-<button id="button5-1">큰값</button>
-<button id="button5-2">작은값</button>
-<p id="result5"></p>
-<hr>
-<h2>문제6</h2>
-<input type="text" name="" id="input6-1"><br>
-<button id="button6-1">정렬</button>
-<p id="result6"></p>
-<hr>
-<h2>문제7</h2>
-<input type="text" name="" id="input7-1"><br>
-<button id="button7-1">곱한 결과는?</button>
-<p id="result7"></p>
+    <hr>
+    <h2>문제5</h2>
+    <input type="text" name="" id="input5-1">
+    <br>
+    <input type="text" name="" id="input5-2">
+    <br>
+    <button id="button5-1">큰값</button>
+    <button id="button5-2">작은값</button>
+    <p id="result5"></p>
+    <hr>
+    <h2>문제6</h2>
+    <input type="text" name="" id="input6-1">
+    <br>
+    <button id="button6-1">정렬</button>
+    <p id="result6"></p>
+    <hr>
+    <h2>문제7</h2>
+    <input type="text" name="" id="input7-1">
+    <br>
+    <button id="button7-1">곱한 결과는?</button>
+    <p id="result7"></p>
 
+    <hr>
+    <h2>문제8</h2>
+    <input type="text" name="" id="input8-1">
+    <br>
+    <input type="text" name="" id="input8-2">
+    <br>
+    <button id="button8-1">텍스트 연결</button>
+    <p id="result8"></p>
 
+    <hr>
+    <h2>문제9</h2>
+    <input type="text" name="" id="input9-1">
+    <br>
+    <input type="text" name="" id="input9-2">
+    <br>
+    <button id="button9">찾기</button>
+    <p id="result9"></p>
 
+    <hr>
+    <h2>문제10</h2>
+    <input type="number" name="" id="input10-1">
+    <br>
+    <input type="number" name="" id="input10-2">
+    <br>
+    <button id="button10-1">더하기</button>
+    <button id="button10-2">빼기</button>
+    <button id="button10-3">곱하기</button>
+    <button id="button10-4">나누기</button>
+    <button id="button10-5">나머지</button>
+    <p id="result10"></p>
+
+    <hr>
+    <h2>문제11</h2>
+    <input type="number" name="" id="input11-1">
+    <br>
+    <input type="number" name="" id="input11-2">
+    <br>
+    <button id="button11">랜덤 출력</button>
+    <p id="result11"></p>
+
+    <hr>
+
+    <h2>문제12</h2>
+    <input type="text" name="" id="input12">
+    <br>
+    <button id="button12">거꾸로!!!</button>
+    <p id="result12"></p>
+
+    <hr>
+
+    <h2>문제13</h2>
+    <input type="number" name="" id="input13">
+    <br>
+    <button id="button13">구구단!!</button>
+    <div id="result13"></div>
+
+    <hr>
+
+    <h2>문제14</h2>
+
+    <div id="result14"></div>
 </body>
 
 </html>
