@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // 문제1
+            var showStars1 = function () {
+                var resultText = "";
+
+                for (var i = 0; i < 5; i++) {
+                    for (var j = 0; j < (i + 1); j++) {
+                        resultText += "*";
+                    }
+                    resultText += "<br>";
+                }
+                return resultText;
+            }
+            $("#result1").html(showStars1());
+
+            //문제2
+            var showStars2 = function() {
+                var resultText = "";
+
+                for (var i = 0; i < 5; i++) {
+
+                    for (var j = 5; j > i; j--) {
+                        resultText += "*";
+                    }
+                    resultText += "<br>";
+
+                }
+
+                return resultText;
+            }
+            $("#result2").html(showStars2());
+
+            //문제3
+            var showStars3 = function() {
+                var resultText = "";
+
+                for (var i = 0; i < 5; i++) {
+
+                    for (var j = 0; j < i; j++) {
+
+                        resultText += "&nbsp;"; // 0, 1, 2, 3, 4
+
+                    }
+
+                    for (var k = 0; k < (5-i); k++) {
+
+                        resultText += "*"; // 5, 4, 3, 2, 1
+
+                    }
+
+                    resultText += "<br>";
+                }
+
+                return resultText;
+            }
+            $("#result3").html(showStars3());
+
+
+            // 문제 4
+            var showStars4 = function() {
+                var resultText = "";
+
+                for (var i = 0; i < 5; i++) {
+                    for (var k = 0; k < (4-i); k++) {
+                        resultText += "&nbsp;" // 4, 3, 2, 1, 0
+
+                    }
+
+                    for (var j = 0; j < (i+1); j++) {
+                        resultText += "*"; // 1, 2, 3, 4, 5
+
+                    }
+
+
+
+                    resultText += "<br>";
+                }
+
+                return resultText;
+            }
+            $("#result4").html(showStars4());
+
+            // 문제 5
+            $("#button5-1").click(function() {
+                var number1 = Number($("#input5-1").val());
+                var number2 = Number($("#input5-2").val());
+                $("#result5").text(number1 > number2 ? number1 : number2);
+            });
+
+            $("#button5-2").click(function() {
+                var number1 = Number($("#input5-1").val());
+                var number2 = Number($("#input5-2").val());
+                $("#result5").text(number1 < number2 ? number1 : number2);
+            });
+
+            // 문제6
+            $("#button6-1").click(function() {
+                var text = $("#input6-1").val();
+                var numbers = text.split(",");
+                numbers.sort(function(a, b) {return a - b;});
+
+                $("#result6").text(numbers);
+
+            });
+
+            // 문제 7
+            $("#button7-1").click(function() {
+                var text = $("#input7-1").val();
+                var numbers = text.split(",");
+                var resultText = "";
+                var negative = 0;
+                for (var i = 0; i < numbers.length; i++) {
+                    var num = Number(numbers[i]);
+                    if (num === 0) {
+                        resultText = "0입니다.";
+                        break;
+                    } else if (num < 0) {
+                        negative++;
+                    }
+                }
+
+                if (resultText === "") {
+                    resultText = (negative % 2) === 0 ? "양수입니다."
+                                                      : "음수입니다.";
+                }
+
+                $("#result7").text(resultText);
+
+            });
+
+
+
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <h2>문제1 ~ 문제4</h2>
+    <p id="result1"></p>
+    <p id="result2"></p>
+    <p id="result3"></p>
+    <p id="result4"></p>
+<hr>
+<h2>문제5</h2>
+<input type="text" name="" id="input5-1"><br>
+<input type="text" name="" id="input5-2"><br>
+<button id="button5-1">큰값</button>
+<button id="button5-2">작은값</button>
+<p id="result5"></p>
+<hr>
+<h2>문제6</h2>
+<input type="text" name="" id="input6-1"><br>
+<button id="button6-1">정렬</button>
+<p id="result6"></p>
+<hr>
+<h2>문제7</h2>
+<input type="text" name="" id="input7-1"><br>
+<button id="button7-1">곱한 결과는?</button>
+<p id="result7"></p>
+
+
+
+</body>
+
+</html>
