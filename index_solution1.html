@@ -258,8 +258,118 @@
             }
 
 
+            //문제 15
+            for (var j = 2; j <= 9; j += 2) {
+                var dan = $("<div/>");
+                var resultText = "";
+                for (var i = 1; i <= 9; i++) {
+                    // n x 1 = r
+                    // n x 2 = r
+                    // ....
+                    resultText += j + " &times; " +
+                        i + " = " + (j * i) + "<br>";
+                }
+                dan.html(resultText);
+                dan.css({
+                    "border": "1px solid black",
+                    "margin": "15px",
+                    "padding": "10px",
+                    "width": "100px",
+                    "display": "inline-block"
+                });
 
 
+                $("#result15").append(dan);
+            }
+
+            // 문제16
+
+            $("#button16").click(function () {
+                $("#result16").html("");
+                var number = Number($("#input16").val());
+
+                for (var j = 2; j <= 9; j++) {
+                    if (j === number) {
+                        continue;
+                    }
+                    var dan = $("<div/>");
+                    var resultText = "";
+                    for (var i = 1; i <= 9; i++) {
+                        // n x 1 = r
+                        // n x 2 = r
+                        // ....
+                        resultText += j + " &times; " +
+                            i + " = " + (j * i) + "<br>";
+                    }
+                    dan.html(resultText);
+                    dan.css({
+                        "border": "1px solid black",
+                        "margin": "15px",
+                        "padding": "10px",
+                        "width": "100px",
+                        "display": "inline-block"
+                    });
+
+
+                    $("#result16").append(dan);
+                }
+
+            });
+
+            //문제 17
+            $("#button17").click(function () {
+                var number = Number($("#input17").val());
+                var resultText = "";
+
+                for (var i = 0; i < number; i++) {
+                    for (var j = 0; j < (i + 1); j++) {
+                        resultText += "*";
+                    }
+                    resultText += "<br>";
+                }
+
+                $("#result17").html(resultText);
+
+
+            });
+
+            //문제18
+            $("#button18").click(function () {
+                var num1 = Number($("#input18-1").val());
+                var num2 = Number($("#input18-2").val());
+                var gcd = function (a, b) {
+                    if (!b) {
+                        return a;
+                    }
+
+                    return gcd(b, a % b);
+                };
+
+                $("#result18").text(gcd(num1, num2));
+
+            });
+
+            //문제 19
+            p19RandomNumber = Math.floor(
+                Math.random() * 100
+            ) + 1;
+            
+            $("#button19reset").click(function () {
+                p19RandomNumber = Math.floor(
+                    Math.random() * 100
+                ) + 1;
+            });
+
+            $("#button19").click(function () {
+                var number = Number($("#input19").val());
+                if (number === p19RandomNumber) {
+                    $("#result19").text("맞았습니다!!");
+                } else if (number < p19RandomNumber) {
+                    $("#result19").text("값이 작습니다. 더 큰 값을 유추해보세요.");
+                } else {
+                    $("#result19").text("값이 큽니다. 더 작은 값을 유추해보세요.");
+                }
+            });
 
 
         });
@@ -357,6 +467,44 @@
     <h2>문제14</h2>
 
     <div id="result14"></div>
+
+    <hr>
+    <h2>문제15</h2>
+    <div id="result15"></div>
+
+    <hr>
+    <h2>문제16</h2>
+    <input type="number" id="input16">
+    <br>
+    <button id="button16">구구단표보여주기(제외)</button>
+    <br>
+    <div id="result16"></div>
+
+    <hr>
+    <h2>문제17</h2>
+    <input type="number" name="" id="input17">
+    <br>
+    <button id="button17">별표보여줘</button>
+    <p id="result17"></p>
+
+    <hr>
+    <h2>문제18</h2>
+    <input type="number" name="" id="input18-1">
+    <br>
+    <input type="number" name="" id="input18-2">
+    <br>
+    <button id="button18">최대공약수보여주기</button>
+    <p id="result18"></p>
+
+    <hr>
+    <h2>문제19</h2>
+    <input type="number" name="" id="input19">
+    <br>
+    <button id="button19reset">게임초기화</button>
+    <br>
+    <button id="button19">확인!</button>
+    <p id="result19"></p>
+
 </body>
 
 </html>
