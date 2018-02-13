@@ -353,7 +353,7 @@
             p19RandomNumber = Math.floor(
                 Math.random() * 100
             ) + 1;
-            
+
             $("#button19reset").click(function () {
                 p19RandomNumber = Math.floor(
                     Math.random() * 100
@@ -369,6 +369,42 @@
                 } else {
                     $("#result19").text("값이 큽니다. 더 작은 값을 유추해보세요.");
                 }
+            });
+
+            $("#button20").click(function () {
+                var results = document.getElementById('result20');
+                var r = new XMLHttpRequest();
+                r.open("GET", "http://www.filltext.com?rows=3&f={firstName}", true);
+                r.onreadystatechange = function () {
+                    if (r.readyState != 4 || r.status != 200) return;
+                    var data = JSON.parse(r.responseText);
+                    for (i = 0; i < data.length; i++) {
+                        results.innerHTML += '<li>' + data[i].f + '</li>'
+                    }
+                };
+                r.send();
+
+
+            });
+
+            $("#button21").click(function () {
+                var url = "http://www.filltext.com/?callback=?";
+                $.getJSON(url, {
+                    'rows': 4,
+                    'fname': '{firstName}',
+                    'lname': '{lastName}',
+                    'tel': '{phone|format}',
+                })
+                    .done(function (data) {
+                        $.each(data, function (i, item) {
+                            var html =
+                                "<td>" + item.fname + "</td>" +
+                                "<td>" + item.lname + "</td>" +
+                                "<td>" + item.tel + "</td>";
+                            $("<tr/>").html(html).appendTo("#result21");
+                        });
+                    });
+
             });
 
 
@@ -504,6 +540,18 @@
     <br>
     <button id="button19">확인!</button>
     <p id="result19"></p>
+
+    <hr>
+
+    <h2>문제20</h2>
+    <ul id="result20"></ul>
+    <button id="button20">더보기</button>
+
+    <hr>
+    <h2>문제21</h2>
+
+    <table id="result21"></table>
+    <button id="button21">더보기</button>
 
 </body>
 
